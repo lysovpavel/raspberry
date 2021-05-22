@@ -12,7 +12,7 @@ in1_right = 16
 in2_right = 20
 en_right = 21
 
-temp1 = 1
+temp1 = 0
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(in1_left, GPIO.OUT)
@@ -46,14 +46,14 @@ while (1):
             GPIO.output(in2_left, GPIO.LOW)
             GPIO.output(in1_right, GPIO.HIGH)
             GPIO.output(in2_right, GPIO.LOW)
-            print("forward")
+            print("backward")
             x = 'z'
         else:
             GPIO.output(in1_left, GPIO.LOW)
             GPIO.output(in2_left, GPIO.HIGH)
             GPIO.output(in1_right, GPIO.LOW)
             GPIO.output(in2_right, GPIO.HIGH)
-            print("backward")
+            print("forward")
             x = 'z'
 
 
@@ -65,21 +65,25 @@ while (1):
         GPIO.output(in2_right, GPIO.LOW)
         x = 'z'
 
-    elif x == 'f':
-        print("forward")
+    elif x == 'b':
+        print("backward")
         GPIO.output(in1_left, GPIO.HIGH)
         GPIO.output(in2_left, GPIO.LOW)
         GPIO.output(in1_right, GPIO.HIGH)
         GPIO.output(in2_right, GPIO.LOW)
+        p_left.ChangeDutyCycle(50)
+        p_right.ChangeDutyCycle(50)
         temp1 = 1
         x = 'z'
 
-    elif x == 'b':
-        print("backward")
+    elif x == 'f':
+        print("forward")
         GPIO.output(in1_left, GPIO.LOW)
         GPIO.output(in2_left, GPIO.HIGH)
         GPIO.output(in1_right, GPIO.LOW)
         GPIO.output(in2_right, GPIO.HIGH)
+        p_left.ChangeDutyCycle(50)
+        p_right.ChangeDutyCycle(50)
         temp1 = 0
         x = 'z'
 
@@ -101,16 +105,28 @@ while (1):
         p_right.ChangeDutyCycle(75)
         x = 'z'
 
+    elif x == 'ss':
+        print("SUPER SPEED!!!")
+        p_left.ChangeDutyCycle(100)
+        p_right.ChangeDutyCycle(100)
+        x = 'z'
+
+    elif x == 'turbo':
+        print("TURBO SPEED!!!")
+        p_left.ChangeDutyCycle(150)
+        p_right.ChangeDutyCycle(150)
+        x = 'z'
+
     elif x == 'rr':
         print("right")
-        p_left.ChangeDutyCycle(75)
-        p_right.ChangeDutyCycle(25)
+        p_left.ChangeDutyCycle(15)
+        p_right.ChangeDutyCycle(85)
         x = 'z'
 
     elif x == 'll':
         print("left")
-        p_left.ChangeDutyCycle(25)
-        p_right.ChangeDutyCycle(75)
+        p_left.ChangeDutyCycle(85)
+        p_right.ChangeDutyCycle(15)
         x = 'z'
 
     elif x == 'lt':
@@ -119,8 +135,8 @@ while (1):
         GPIO.output(in2_left, GPIO.HIGH)
         GPIO.output(in1_right, GPIO.HIGH)
         GPIO.output(in2_right, GPIO.LOW)
-        p_left.ChangeDutyCycle(25)
-        p_right.ChangeDutyCycle(25)
+        p_left.ChangeDutyCycle(75)
+        p_right.ChangeDutyCycle(75)
         x = 'z'
 
 
@@ -130,7 +146,7 @@ while (1):
         GPIO.output(in2_left, GPIO.LOW)
         GPIO.output(in1_right, GPIO.LOW)
         GPIO.output(in2_right, GPIO.HIGH)
-        p_left.ChangeDutyCycle(25)
+        p_left.ChangeDutyCycle(75)
         p_right.ChangeDutyCycle(75)
         x = 'z'
 
