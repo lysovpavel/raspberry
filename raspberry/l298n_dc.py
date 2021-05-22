@@ -109,16 +109,12 @@ while (1):
 
     elif x == 'll':
         print("left")
-        GPIO.output(in1_left, GPIO.HIGH)
-        GPIO.output(in2_left, GPIO.LOW)
-        GPIO.output(in1_right, GPIO.LOW)
-        GPIO.output(in2_right, GPIO.HIGH)
         p_left.ChangeDutyCycle(25)
-        p_right.ChangeDutyCycle(25)
+        p_right.ChangeDutyCycle(75)
         x = 'z'
 
     elif x == 'lt':
-        print("left")
+        print("left turn")
         GPIO.output(in1_left, GPIO.LOW)
         GPIO.output(in2_left, GPIO.HIGH)
         GPIO.output(in1_right, GPIO.HIGH)
@@ -129,7 +125,11 @@ while (1):
 
 
     elif x == 'rt':
-        print("left")
+        print("right turn")
+        GPIO.output(in1_left, GPIO.HIGH)
+        GPIO.output(in2_left, GPIO.LOW)
+        GPIO.output(in1_right, GPIO.LOW)
+        GPIO.output(in2_right, GPIO.HIGH)
         p_left.ChangeDutyCycle(25)
         p_right.ChangeDutyCycle(75)
         x = 'z'
