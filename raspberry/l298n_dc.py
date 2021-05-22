@@ -43,15 +43,15 @@ while (1):
         print("run")
         if (temp1 == 1):
             GPIO.output(in1_left, GPIO.HIGH)
-            GPIO.output(in1_right, GPIO.HIGH)
             GPIO.output(in2_left, GPIO.LOW)
+            GPIO.output(in1_right, GPIO.HIGH)
             GPIO.output(in2_right, GPIO.LOW)
             print("forward")
             x = 'z'
         else:
             GPIO.output(in1_left, GPIO.LOW)
-            GPIO.output(in1_right, GPIO.LOW)
             GPIO.output(in2_left, GPIO.HIGH)
+            GPIO.output(in1_right, GPIO.LOW)
             GPIO.output(in2_right, GPIO.HIGH)
             print("backward")
             x = 'z'
@@ -68,8 +68,8 @@ while (1):
     elif x == 'f':
         print("forward")
         GPIO.output(in1_left, GPIO.HIGH)
-        GPIO.output(in1_right, GPIO.HIGH)
         GPIO.output(in2_left, GPIO.LOW)
+        GPIO.output(in1_right, GPIO.HIGH)
         GPIO.output(in2_right, GPIO.LOW)
         temp1 = 1
         x = 'z'
@@ -77,8 +77,8 @@ while (1):
     elif x == 'b':
         print("backward")
         GPIO.output(in1_left, GPIO.LOW)
-        GPIO.output(in1_right, GPIO.LOW)
         GPIO.output(in2_left, GPIO.HIGH)
+        GPIO.output(in1_right, GPIO.LOW)
         GPIO.output(in2_right, GPIO.HIGH)
         temp1 = 0
         x = 'z'
@@ -98,6 +98,39 @@ while (1):
     elif x == 'h':
         print("high")
         p_left.ChangeDutyCycle(75)
+        p_right.ChangeDutyCycle(75)
+        x = 'z'
+
+    elif x == 'rr':
+        print("right")
+        p_left.ChangeDutyCycle(75)
+        p_right.ChangeDutyCycle(25)
+        x = 'z'
+
+    elif x == 'll':
+        print("left")
+        GPIO.output(in1_left, GPIO.HIGH)
+        GPIO.output(in2_left, GPIO.LOW)
+        GPIO.output(in1_right, GPIO.LOW)
+        GPIO.output(in2_right, GPIO.HIGH)
+        p_left.ChangeDutyCycle(25)
+        p_right.ChangeDutyCycle(25)
+        x = 'z'
+
+    elif x == 'lt':
+        print("left")
+        GPIO.output(in1_left, GPIO.LOW)
+        GPIO.output(in2_left, GPIO.HIGH)
+        GPIO.output(in1_right, GPIO.HIGH)
+        GPIO.output(in2_right, GPIO.LOW)
+        p_left.ChangeDutyCycle(25)
+        p_right.ChangeDutyCycle(25)
+        x = 'z'
+
+
+    elif x == 'rt':
+        print("left")
+        p_left.ChangeDutyCycle(25)
         p_right.ChangeDutyCycle(75)
         x = 'z'
 
